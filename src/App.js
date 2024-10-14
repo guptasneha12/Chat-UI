@@ -1,24 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { Provider } from 'react-redux';
+import ChatWindow from './components/ChatWindow';
+import MessageInput from './components/MessageInput';
+import store from './redux/store';
+import { Box, Typography } from '@mui/material';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider store={store}>
+      <Box sx={{
+        width: '100vw', height: '100vh',
+        display: 'flex', flexDirection: 'column',
+        justifyContent: 'center', alignItems: 'center',
+        background: 'linear-gradient(135deg, #4fc3f7, #1e88e5)',
+      }}>
+        <Typography variant="h4" gutterBottom sx={{ color: '#fff', marginBottom: '20px' }}>
+          Chat Interface
+        </Typography>
+        <ChatWindow />
+        <MessageInput />
+      </Box>
+    </Provider>
   );
 }
 
